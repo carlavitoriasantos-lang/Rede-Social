@@ -69,7 +69,7 @@ color: #1c1e21;
 position: relative;
 width: 100%;
 aspect-ratio: 4 / 5;
-background-color: #000000;
+background-color: #8ef7ff;
 }
 
 .post-media img.main-img {
@@ -92,7 +92,7 @@ height: 44px;
 width: 100%;
 height: 100%;
 border-radius: 50%;
-border: 2px solid #000000;
+border: 2px solid #d29af1;
 object-fit: cover;
 }
 
