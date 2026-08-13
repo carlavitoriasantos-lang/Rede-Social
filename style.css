@@ -56,7 +56,7 @@ object-fit: cover;
 .username {
 font-weight: 600;
 font-size: 14px;
-color: #1c1e21;
+color: #012e72;
 }
 
 .more-options {
@@ -153,15 +153,15 @@ stroke-linejoin: round;
 .post-details {
 padding: 0 16px 12px 16px;
 font-size: 13px;
-color: #769cd6;
+color: #000000;
 }
 
 .likes {
-color: #949494;
+color: #000000;
 }
 
 .likes strong {
-color: #2d6ac5;
+color: #080808;
 }
 
 /* Barra de Navegação Inferior */
@@ -171,11 +171,11 @@ justify-content: space-around;
 align-items: center;
 padding: 12px 0 16px 0;
 border-top: 1px solid #0b39b6;
-background: #080809;
+background: #000000;
 }
 
 .nav-item {
-color: #1c1e21;
+color: #edf0f5;
 cursor: pointer;
 }
 
