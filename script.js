@@ -6,5 +6,6 @@ document.addEventListener("DOMContentLoaded", () =>  {
     const likeSvg = likeBtn.querySelector("svg")
         
     //localiza o contador
-    let texNode = array
+
+    let texNode = Array.from(likeBtn)
 } )
