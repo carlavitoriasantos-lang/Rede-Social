@@ -7,5 +7,5 @@ document.addEventListener("DOMContentLoaded", () =>  {
         
     //localiza o contador
 
-    let texNode = Array.from(likeBtn)
+    let texNode = Array.from(likeBtn.childNodes).find(node) =>
 } )
