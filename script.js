@@ -24,6 +24,10 @@ function applyLikedStyle (){
     likeSvg.style.fill = "#a30303";
     likeSvg.style.stroke = "#a30303";
     likeSvg.style.color = "#a30303";
-    
+
+
+    //efeito curtida
+    likeSvg.style.transform = "scale(1.3)";
+    setTimeout(() => (likeSvg.style.transform = "scale(1)")150);    
 }
 
