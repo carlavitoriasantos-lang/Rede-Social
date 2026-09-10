@@ -1,33 +1,45 @@
-//botão curtida
+document.addEventListener("DOMContentLoaded", () => {
+  // Seleciona o botão de curtida e a tag span com o número do contador
+  const likeBtn = document.querySelector(".left-actions .action-btn:first-child");
+  const likeCountElement = likeBtn ? likeBtn.querySelector(".like-count") : null;
+  const likeSvg = likeBtn ? likeBtn.querySelector("svg") : null;
 
-document.addEventListener("DOMContentLoaded", () =>  {
-    const likeBtn = document.querySelector("left.actions . action.btn:fist-child");
-    if (condition!likeBtn) retury;
-    const likeSvg = likeBtn.querySelector("svg");{
-        
-    //localiza o contador
+  if (!likeBtn || !likeCountElement || !likeSvg) return;
 
-    let texNode = Array.from(likeBtn.childNodes).find(node) => node.nodeType
-    === Node. TEXT_NODE && node.textContent.trim() !== ""
-   }
- } );
-//zera o contador
-let cont = 0;
+  // Lê o valor inicial de curtidas (ex: 1200)
+  let likesCount = parseInt(likeCountElement.textContent.trim(), 10) || 0;
+  let isLiked = false;
 
-//atualia
-if(textNode){
-    textNode.textContent = '0';
-}
+  // Função para formatar o número (ex: 1201 -> 1.2K)
+  function formatLikes(count) {
+    if (count >= 1000) {
+      return (count / 1000).toFixed(1) + "K";
+    }
+    return count.toString();
+  }
 
-//coração
-function applyLikedStyle (){
-    likeSvg.style.fill = "#a30303";
-    likeSvg.style.stroke = "#a30303";
-    likeSvg.style.color = "#a30303";
+  // Atualiza o texto na tela no carregamento da página
+  likeCountElement.textContent = formatLikes(likesCount);
 
+  // Evento ao clicar no botão
+  likeBtn.addEventListener("click", () => {
+    isLiked = !isLiked; // Alterna entre curtido (true) e não curtido (false)
 
-    //efeito curtida
+    if (isLiked) {
+      likesCount++;
+      likeBtn.classList.add("liked");
+    } else {
+      likesCount--;
+      likeBtn.classList.remove("liked");
+    }
+
+    // Atualiza o valor formatado no contador
+    likeCountElement.textContent = formatLikes(likesCount);
+
+    // Efeito visual de "Pulsar" o coração
     likeSvg.style.transform = "scale(1.3)";
-    setTimeout(() => (likeSvg.style.transform = "scale(1)")150);    
-}
-
+    setTimeout(() => {
+      likeSvg.style.transform = "scale(1)";
+    }, 150);
+  });
+});

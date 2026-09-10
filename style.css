@@ -1,188 +1,195 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-background-color: #0d0f12;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
-padding: 20px;
+  background-color: #0d0f12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 /* Moldura estilo smartphone com borda em gradiente */
 .phone-frame {
-width: 100%;
-max-width: 380px;
-border-radius: 40px;
-padding: 8px;
-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-background: linear-gradient(135deg, #4fdcf5 0%, #2e8aa3 25%, #9e0dab 50%, #f86583 75%, #e98686 100%);
+  width: 100%;
+  max-width: 380px;
+  border-radius: 40px;
+  padding: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #4fdcf5 0%, #2e8aa3 25%, #9e0dab 50%, #f86583 75%, #e98686 100%);
 }
 
 .phone-screen {
-background: #b36ac9;
-border-radius: 32px;
-overflow: hidden;
-display: flex;
-flex-direction: column;
+  background: #b36ac9;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Cabeçalho do Post */
 .post-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
 }
 
 .user-info {
-display: flex;
-align-items: center;
-gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .avatar-small {
-width: 36px;
-height: 36px;
-border-radius: 50%;
-object-fit: cover;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .username {
-font-weight: 600;
-font-size: 14px;
-color: #f7f9fc;
+  font-weight: 600;
+  font-size: 14px;
+  color: #f7f9fc;
 }
 
 .more-options {
-cursor: pointer;
-color: #ffffff;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 /* Mídia / Foto */
 .post-media {
-position: relative;
-width: 100%;
-aspect-ratio: 4 / 5;
-background-color: #8ef7ff;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: #8ef7ff;
 }
 
 .post-media img.main-img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Avatar pequeno com ícone '+' sobreposto na foto */
 .user-badge {
-position: absolute;
-bottom: 16px;
-left: 16px;
-width: 44px;
-height: 44px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
 }
 
 .user-badge img {
-width: 100%;
-height: 100%;
-border-radius: 50%;
-border: 2px solid #d29af1;
-object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #d29af1;
+  object-fit: cover;
 }
 
 .user-badge .plus-icon {
-position: absolute;
-bottom: -2px;
-right: -2px;
-background: #9333ea;
-color: rgb(19, 17, 17);
-font-size: 10px;
-font-weight: bold;
-width: 16px;
-height: 16px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-border: 2px solid #c25ce0;
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: #9333ea;
+  color: rgb(19, 17, 17);
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #c25ce0;
 }
 
 /* Ações (Curtir, Comentar, Repostar, Direct, Salvar) */
 .post-actions {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 12px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 8px 16px;
 }
 
 .left-actions {
-display: flex;
-align-items: center;
-gap: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .action-btn {
-display: flex;
-align-items: center;
-gap: 5px;
-font-size: 13px;
-font-weight: 600;
-color: #1c1e21;
-cursor: pointer;
-background: none;
-border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c1e21;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .action-btn svg {
-width: 22px;
-height: 22px;
-fill: none;
-stroke: currentColor;
-stroke-width: 2;
-stroke-linecap: round;
-stroke-linejoin: round;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s ease, fill 0.2s ease, stroke 0.2s ease;
+}
+
+/* Classe CSS aplicada quando o post é curtido */
+.action-btn.liked svg {
+  fill: #e11d48;
+  stroke: #e11d48;
 }
 
 /* Texto de Curtidas */
 .post-details {
-padding: 0 16px 12px 16px;
-font-size: 13px;
-color: #fdfdfd;
+  padding: 0 16px 12px 16px;
+  font-size: 13px;
+  color: #fdfdfd;
 }
 
 .likes {
-color: #fffafa;
+  color: #fffafa;
 }
 
 .likes strong {
-color: #f7f7f7;
+  color: #f7f7f7;
 }
 
 /* Barra de Navegação Inferior */
 .nav-bar {
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 12px 0 16px 0;
-border-top: 1px solid #0b39b6;
-background: #d880f3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0 16px 0;
+  border-top: 1px solid #0b39b6;
+  background: #d880f3;
 }
 
 .nav-item {
-color: #ffffff;
-cursor: pointer;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .nav-item svg {
-width: 24px;
-height: 24px;
-fill: none;
-stroke: currentColor;
-stroke-width: 2;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
 }
