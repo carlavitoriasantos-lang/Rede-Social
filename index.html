@@ -2,490 +2,371 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Universo Sobrenatural</title>
-
-    <meta name="description" content="Explore o universo de The Vampire Diaries e The Originals.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universo Sobrenatural</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- TELA DE ENTRADA -->
-    <div id="intro" class="intro">
-        <div class="intro-content">
-            <p>UMA HISTÓRIA DE AMOR, PODER E IMORTALIDADE</p>
-            <h1>UNIVERSO SOBRENATURAL</h1>
-            <p>Dois mundos. Uma história. Infinitos segredos.</p>
-
-            <button id="enterButton">
-                ENTRAR NO UNIVERSO
-            </button>
-        </div>
+  <div class="intro" id="intro">
+    <div class="intro-content">
+      <p class="eyebrow">UM MUNDO DE SEGREDOS, AMOR E IMORTALIDADE</p>
+      <h1>UNIVERSO<br><span>SOBRENATURAL</span></h1>
+      <p>Entre em um mundo onde a eternidade tem um preço.</p>
+      <button class="button button-primary" id="enterButton">ENTRAR NO UNIVERSO</button>
     </div>
+    <div class="intro-symbol">✦</div>
+  </div>
 
-    <audio id="backgroundMusic" loop>
-    <source src="assets/musica.m4a" type="audio/mp4">
-</audio>
+  <header class="site-header">
+    <a class="brand" href="#inicio">UNIVERSO <span>SOBRENATURAL</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <nav class="nav" id="mainNav">
+      <a href="#inicio">Início</a>
+      <a href="#series">Séries</a>
+      <a href="#personagens">Personagens</a>
+      <a href="#acontecimentos">Acontecimentos</a>
+      <a href="#curiosidades">Curiosidades</a>
+      <a href="#comparacao">Comparação</a>
+      <a href="#jogo">Jogo</a>
+    </nav>
+  </header>
 
-<button id="musicButton">
-    🔊 Ligar música
-</button>
-    
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">MYSTIC FALLS • NOVA ORLEANS</p>
+        <h2>Algumas histórias<br>nunca <span>morrem.</span></h2>
+        <p>Explore os mistérios, os personagens e os destinos entrelaçados de duas séries que marcaram o universo sobrenatural.</p>
+        <a class="button button-outline" href="#series">EXPLORAR AS SÉRIES</a>
+      </div>
+      <div class="hero-bottom">AMOR ✦ PODER ✦ ETERNIDADE</div>
+    </section>
 
-    <!-- CABEÇALHO -->
-    <header>
-        <div class="logo">UNIVERSO SOBRENATURAL</div>
+    <section class="section intro-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">BEM-VINDO(A)</p>
+        <h2>Um universo <span>além da vida</span></h2>
+      </div>
+      <p class="intro-text reveal">
+        Este site é uma viagem pelo mundo de
+        <strong>The Vampire Diaries</strong> e
+        <strong>The Originals</strong>. Aqui você vai conhecer
+        histórias, personagens, conflitos, curiosidades e escolhas
+        que mudam tudo.
+      </p>
+    </section>
 
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#diarios">Diários de um Vampiro</a>
-            <a href="#originais">Os Originais</a>
-            <a href="#personagens">Personagens</a>
-            <a href="#viloes">Vilões</a>
-            <a href="#comparacao">Comparação</a>
-            <a href="#curiosidades">Curiosidades</a>
-            <a href="#galeria">Galeria</a>
-            <a href="#jogo">Jogo</a>
-        </nav>
+    <section class="section series-section" id="series">
+      <div class="section-heading reveal">
+        <p class="eyebrow">DUAS SÉRIES, UM UNIVERSO</p>
+        <h2>As <span>histórias</span></h2>
+      </div>
 
-        <button id="musicButton">♫ Música: desligada</button>
-    </header>
-
-    <main>
-
-        <!-- INÍCIO -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <p>ENTRE NO MUNDO DAS CRIATURAS SOBRENATURAIS</p>
-
-                <h1>O AMOR PODE SER ETERNO. O PERIGO TAMBÉM.</h1>
-
-                <p>
-                    Conheça os segredos, romances, batalhas e personagens
-                    de The Vampire Diaries e The Originals.
-                </p>
-
-                <a href="#diarios" class="botao">EXPLORAR</a>
+      <div class="series-grid">
+        <article class="series-card reveal">
+          <img src="https://br.web.img2.acsta.net/newsv7/20/06/25/16/59/3481804.jpg" alt="Imagem de The Vampire Diaries">
+          <div class="series-card-content">
+            <p class="eyebrow">2009 — 2017</p>
+            <h3>The Vampire Diaries</h3>
+            <p>Em Mystic Falls, Elena Gilbert conhece os irmãos Stefan e Damon Salvatore. A chegada deles revela segredos antigos, paixões perigosas e a presença de criaturas sobrenaturais.</p>
+            <div class="stats">
+              <span><b>8</b> temporadas</span>
+              <span><b>171</b> episódios</span>
             </div>
-        </section>
+          </div>
+        </article>
 
-        <!-- THE VAMPIRE DIARIES -->
-        <section id="diarios" class="serie">
-            <h2>THE VAMPIRE DIARIES</h2>
-
-            <img
-                class="capa-serie"
-                src="https://br.web.img2.acsta.net/newsv7/20/06/25/16/59/3481804.jpg"
-                alt="Imagem promocional de The Vampire Diaries"
-            >
-
-            <h3>Uma cidade cheia de segredos</h3>
-
-            <p>
-                The Vampire Diaries é uma série de fantasia, romance e drama
-                sobrenatural baseada nos livros de L. J. Smith. A história
-                acontece na cidade fictícia de Mystic Falls e acompanha
-                Elena Gilbert, uma jovem que conhece os irmãos vampiros
-                Stefan e Damon Salvatore.
-            </p>
-
-            <p>
-                Ao longo da história, os personagens enfrentam vampiros,
-                bruxas, lobisomens, criaturas antigas e muitos perigos.
-                Entre romances, amizades e rivalidades, eles precisam
-                proteger as pessoas que amam.
-            </p>
-
-            <div class="informacoes">
-                <div>
-                    <h3>2009</h3>
-                    <p>Ano de estreia</p>
-                </div>
-
-                <div>
-                    <h3>2017</h3>
-                    <p>Ano do encerramento</p>
-                </div>
-
-                <div>
-                    <h3>8</h3>
-                    <p>Temporadas</p>
-                </div>
-
-                <div>
-                    <h3>171</h3>
-                    <p>Episódios</p>
-                </div>
+        <article class="series-card reveal">
+          <img src="https://m.media-amazon.com/images/M/MV5BYWRkNmUwMGUtNDYyMC00NjZjLTljMDUtNTFhZmY4NzA5M2RiXkEyXkFqcGc@._V1_.jpg" alt="Imagem de The Originals">
+          <div class="series-card-content">
+            <p class="eyebrow">2013 — 2018</p>
+            <h3>The Originals</h3>
+            <p>A família Mikaelson retorna a Nova Orleans, cidade que ajudou a construir. Klaus, Elijah e Rebekah enfrentam disputas por poder, lealdade e família.</p>
+            <div class="stats">
+              <span><b>5</b> temporadas</span>
+              <span><b>92</b> episódios</span>
             </div>
-
-            <p>
-                <strong>Criação:</strong> Kevin Williamson e Julie Plec.
-            </p>
-        </section>
-
-        <!-- THE ORIGINALS -->
-        <section id="originais" class="serie">
-            <h2>THE ORIGINALS</h2>
-
-            <img
-                class="capa-serie"
-                src="https://m.media-amazon.com/images/M/MV5BYWRkNmUwMGUtNDYyMC00NjZjLTljMDUtNTFhZmY4NzA5M2RiXkEyXkFqcGc@._V1_.jpg"
-                alt="Imagem promocional de The Originals"
-            >
-
-            <h3>A família mais poderosa do mundo sobrenatural</h3>
-
-            <p>
-                The Originals é uma série derivada de The Vampire Diaries.
-                A trama acompanha a família Mikaelson, conhecida como
-                os vampiros originais, em Nova Orleans.
-            </p>
-
-            <p>
-                Klaus Mikaelson retorna à cidade e descobre que precisa
-                lutar para proteger sua família, seu poder e sua filha.
-                A série apresenta disputas entre vampiros, bruxas e
-                lobisomens, além de histórias sobre família, lealdade,
-                perdão e sacrifício.
-            </p>
-
-            <div class="informacoes">
-                <div>
-                    <h3>2013</h3>
-                    <p>Ano de estreia</p>
-                </div>
-
-                <div>
-                    <h3>2018</h3>
-                    <p>Ano do encerramento</p>
-                </div>
-
-                <div>
-                    <h3>5</h3>
-                    <p>Temporadas</p>
-                </div>
-
-                <div>
-                    <h3>92</h3>
-                    <p>Episódios</p>
-                </div>
-            </div>
-
-            <p>
-                <strong>Criação:</strong> Julie Plec.
-            </p>
-        </section>
-
-        <!-- PERSONAGENS -->
-        <section id="personagens" class="personagens">
-            <h2>PERSONAGENS PRINCIPAIS</h2>
-
-            <p>Conheça alguns dos personagens que marcaram essas histórias.</p>
-
-            <div class="cards">
-
-                <article class="card">
-                    <img src="img/damon.jpg" alt="Damon Salvatore">
-                    <h3>Damon Salvatore</h3>
-                    <p>Vampiro impulsivo, sarcástico e apaixonado. Seu passado influencia muitas de suas escolhas.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/stefan.jpg" alt="Stefan Salvatore">
-                    <h3>Stefan Salvatore</h3>
-                    <p>Vampiro que tenta controlar seus impulsos e encontrar equilíbrio entre sua humanidade e sua natureza.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/elena.jpg" alt="Elena Gilbert">
-                    <h3>Elena Gilbert</h3>
-                    <p>Jovem que se envolve no mundo sobrenatural e enfrenta grandes desafios para proteger quem ama.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/bonnie.jpg" alt="Bonnie Bennett">
-                    <h3>Bonnie Bennett</h3>
-                    <p>Bruxa poderosa, amiga leal e uma das personagens mais importantes da história.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/klaus.jpg" alt="Klaus Mikaelson">
-                    <h3>Klaus Mikaelson</h3>
-                    <p>Híbrido de vampiro e lobisomem. É poderoso, imprevisível e muito ligado à família.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/elijah.jpg" alt="Elijah Mikaelson">
-                    <h3>Elijah Mikaelson</h3>
-                    <p>Conhecido por sua elegância, honra e dedicação à família Mikaelson.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/rebekah.jpg" alt="Rebekah Mikaelson">
-                    <h3>Rebekah Mikaelson</h3>
-                    <p>Uma vampira original que deseja viver uma vida com amor, liberdade e felicidade.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/marcel.jpg" alt="Marcel Gerard">
-                    <h3>Marcel Gerard</h3>
-                    <p>Um líder influente de Nova Orleans que disputa poder e espaço com os Mikaelson.</p>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- VILÕES -->
-        <section id="viloes" class="viloes">
-            <h2>VILÕES E GRANDES AMEAÇAS</h2>
-
-            <div class="cards">
-
-                <article class="card">
-                    <img src="img/katherine.jpg" alt="Katherine Pierce">
-                    <h3>Katherine Pierce</h3>
-                    <p>Uma vampira manipuladora que usa sua inteligência para sobreviver.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/kai.jpg" alt="Kai Parker">
-                    <h3>Kai Parker</h3>
-                    <p>Um bruxo perigoso que causa conflitos e ameaça muitas pessoas.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/dahlia.jpg" alt="Dahlia">
-                    <h3>Dahlia</h3>
-                    <p>Uma bruxa extremamente poderosa que representa uma ameaça à família Mikaelson.</p>
-                </article>
-
-                <article class="card">
-                    <img src="img/lucien.jpg" alt="Lucien Castle">
-                    <h3>Lucien Castle</h3>
-                    <p>Um vampiro ambicioso que deseja superar os próprios limites e derrotar os Originais.</p>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- ACONTECIMENTOS -->
-        <section id="acontecimentos" class="serie">
-            <h2>ACONTECIMENTOS IMPORTANTES</h2>
-
-            <h3>Em The Vampire Diaries</h3>
-            <ul>
-                <li>Elena conhece os irmãos Salvatore.</li>
-                <li>Os segredos de Mystic Falls começam a aparecer.</li>
-                <li>Bruxas, lobisomens e vampiros entram em conflito.</li>
-                <li>Os personagens enfrentam perdas e fazem grandes sacrifícios.</li>
-            </ul>
-
-            <h3>Em The Originals</h3>
-            <ul>
-                <li>Klaus retorna para Nova Orleans.</li>
-                <li>A família Mikaelson enfrenta inimigos antigos.</li>
-                <li>As disputas pelo controle da cidade aumentam.</li>
-                <li>A família precisa enfrentar escolhas difíceis.</li>
-            </ul>
-        </section>
-
-        <!-- COMPARAÇÃO -->
-        <section id="comparacao" class="comparacao">
-            <h2>DOIS UNIVERSOS, UMA CONEXÃO</h2>
-
-            <div class="comparacao-conteudo">
-
-                <div>
-                    <h3>The Vampire Diaries</h3>
-                    <p><strong>Local:</strong> Mystic Falls.</p>
-                    <p><strong>Foco:</strong> Romance, amizade, mistérios e conflitos sobrenaturais.</p>
-                    <p><strong>Personagens centrais:</strong> Elena, Damon e Stefan.</p>
-                </div>
-
-                <div>
-                    <h3>The Originals</h3>
-                    <p><strong>Local:</strong> Nova Orleans.</p>
-                    <p><strong>Foco:</strong> Família, poder, lealdade e disputas sobrenaturais.</p>
-                    <p><strong>Personagens centrais:</strong> Klaus, Elijah e Rebekah.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- APRENDIZADOS -->
-        <section class="serie">
-            <h2>O QUE PODEMOS APRENDER?</h2>
-
-            <p>
-                Apesar de serem histórias de fantasia, as séries apresentam
-                temas que fazem parte da vida real.
-            </p>
-
-            <ul>
-                <li><strong>Família:</strong> a importância de proteger e apoiar quem amamos.</li>
-                <li><strong>Amizade:</strong> a força de estar ao lado de alguém nos momentos difíceis.</li>
-                <li><strong>Escolhas:</strong> nossas decisões podem mudar o futuro.</li>
-                <li><strong>Perdão:</strong> todos podem tentar mudar, mesmo depois de cometer erros.</li>
-                <li><strong>Coragem:</strong> enfrentar dificuldades exige força e determinação.</li>
-            </ul>
-        </section>
-
-        <!-- PONTOS POSITIVOS E NEGATIVOS -->
-        <section class="comparacao">
-            <h2>PONTOS POSITIVOS E NEGATIVOS</h2>
-
-            <div class="comparacao-conteudo">
-                <div>
-                    <h3>Pontos positivos</h3>
-                    <ul>
-                        <li>Personagens marcantes.</li>
-                        <li>Histórias cheias de mistérios.</li>
-                        <li>Romances e amizades.</li>
-                        <li>Conexão entre as duas séries.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3>Pontos negativos</h3>
-                    <ul>
-                        <li>Algumas histórias são bastante dramáticas.</li>
-                        <li>Existem muitas perdas de personagens.</li>
-                        <li>Alguns conflitos podem ser repetitivos.</li>
-                        <li>Há cenas de violência sobrenatural.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- CURIOSIDADES -->
-        <section id="curiosidades" class="serie">
-            <h2>CURIOSIDADES</h2>
-
-            <div class="curiosidades-lista">
-                <p>🩸 The Originals é uma série derivada de The Vampire Diaries.</p>
-                <p>🩸 A família Mikaelson é conhecida como a família dos vampiros originais.</p>
-                <p>🩸 Mystic Falls é uma cidade fictícia.</p>
-                <p>🩸 Nova Orleans é o principal cenário de The Originals.</p>
-                <p>🩸 As duas séries compartilham personagens e acontecimentos.</p>
-            </div>
-        </section>
-
-        <!-- GALERIA -->
-        <section id="galeria" class="galeria">
-            <h2>GALERIA SOBRENATURAL</h2>
-
-            <p>
-                Imagens, personagens e momentos do universo sobrenatural.
-            </p>
-
-            <div class="galeria-imagens">
-
-                <img
-                    src="https://br.web.img2.acsta.net/newsv7/20/06/25/16/59/3481804.jpg"
-                    alt="Imagem promocional de The Vampire Diaries"
-                >
-
-                <img
-                    src="https://m.media-amazon.com/images/M/MV5BYWRkNmUwMGUtNDYyMC00NjZjLTljMDUtNTFhZmY4NzA5M2RiXkEyXkFqcGc@._V1_.jpg"
-                    alt="Pôster da série"
-                >
-
-                <img
-                    src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/09/elenco-de-the-vampire-diaries.png?w=419&h=283&crop=0&quality=90"
-                    alt="Elenco de The Vampire Diaries"
-                >
-
-                <img
-                    src="https://thumb.wikimedia.org/wikipedia/pt/thumb/9/99/Vampire_Diaries_season_2_promotional_poster.jpeg/250px-Vampire_Diaries_season_2_promotional_poster.jpeg"
-                    alt="Pôster da segunda temporada"
-                >
-
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqZ_DTuTy8DA9Aj4r_Ne2SkAdGMUK427Yb2hBGRgDT56EEmpmQ_WNo01C3&s=10"
-                    alt="Imagem de The Vampire Diaries"
-                >
-
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtNnBmZi0MDm60fshvI5PMW9yYhyTvV28ZewRm3OiLAM1ZJ4AYMWKSLSw&s=10"
-                    alt="Imagem do universo sobrenatural"
-                >
-
-                <img
-                    src="https://i.pinimg.com/originals/41/c3/78/41c378b9585d8f8885c5d66621103e17.jpg"
-                    alt="Imagem de personagens da série"
-                >
-
-            </div>
-        </section>
-
-        <!-- JOGO -->
-        <section id="jogo" class="jogo">
-            <h2>O SEGREDO DOS IMORTAIS</h2>
-
-            <p>
-                Você está prestes a entrar em uma aventura sobrenatural.
-                Escolha seu caminho, encontre pistas e descubra os segredos
-                dos vampiros originais.
-            </p>
-
-            <button id="startGame" class="botao">
-                COMEÇAR A AVENTURA
-            </button>
-
-            <div id="gameArea" class="game-area">
-
-                <h3 id="gameTitle">O Segredo dos Imortais</h3>
-
-                <p>
-                    Capítulo: <span id="gameChapter">1</span>
-                </p>
-
-                <p>
-                    Pontuação: <span id="gamePoints">0</span>
-                </p>
-
-                <p id="gameStory"></p>
-
-                <div id="gameChoices"></div>
-
-                <p id="gameFeedback"></p>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer>
-        <h2>UNIVERSO SOBRENATURAL</h2>
-
-        <p>
-            Um projeto autoral dedicado aos universos de
-            The Vampire Diaries e The Originals.
-        </p>
-
-        <p>Desenvolvido para um projeto escolar.</p>
-
-        <p>© 2026 - Universo Sobrenatural</p>
-
-        <a href="#inicio">Voltar ao início ↑</a>
-    </footer>
-
-    <!-- BOTÃO VOLTAR AO TOPO -->
-    <button id="backToTop" title="Voltar ao topo">
-        ↑
-    </button>
-
-    <script src="script.js"></script>
-
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section characters-section" id="personagens">
+      <div class="section-heading reveal">
+        <p class="eyebrow">ROSTOS CONHECIDOS</p>
+        <h2>Personagens <span>marcantes</span></h2>
+        <p>Heróis, anti-heróis e figuras que transformam o destino de todos.</p>
+      </div>
+
+      <div class="character-grid">
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Damon Salvatore</h3>
+            <p>Impulsivo, sarcástico e intenso. Esconde sentimentos profundos atrás de uma postura provocadora.</p>
+            <span>VAMPIRO</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Stefan Salvatore</h3>
+            <p>Busca controlar seus instintos e fazer o bem, mesmo carregando um passado difícil.</p>
+            <span>VAMPIRO</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Elena Gilbert</h3>
+            <p>Uma jovem corajosa que enfrenta perdas, escolhas e acontecimentos sobrenaturais.</p>
+            <span>HUMANA / VAMPIRA</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Bonnie Bennett</h3>
+            <p>Uma bruxa poderosa, leal aos amigos e essencial para proteger quem ama.</p>
+            <span>BRUXA</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Klaus Mikaelson</h3>
+            <p>Um híbrido temido, marcado por conflitos familiares e pelo desejo de construir seu próprio legado.</p>
+            <span>HÍBRIDO ORIGINAL</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Elijah Mikaelson</h3>
+            <p>Elegante e estratégico, tenta manter a honra e a união da família Mikaelson.</p>
+            <span>VAMPIRO ORIGINAL</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Rebekah Mikaelson</h3>
+            <p>Forte e determinada, deseja experimentar uma vida de amor e liberdade.</p>
+            <span>VAMPIRA ORIGINAL</span>
+          </div>
+        </article>
+
+        <article class="character-card reveal">
+          <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?w=600" alt="Retrato ilustrativo">
+          <div>
+            <h3>Marcel Gerard</h3>
+            <p>Um líder carismático que luta para proteger seu lugar e seu povo em Nova Orleans.</p>
+            <span>VAMPIRO</span>
+          </div>
+        </article>
+      </div>
+      <p class="small-note">As imagens desta seção são retratos ilustrativos, não fotografias oficiais dos atores.</p>
+    </section>
+
+    <section class="section events-section" id="acontecimentos">
+      <div class="section-heading reveal">
+        <p class="eyebrow">MOMENTOS IMPORTANTES</p>
+        <h2>Acontecimentos <span>inesquecíveis</span></h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <span>01</span>
+          <div>
+            <h3>O retorno dos Salvatore</h3>
+            <p>A chegada de Stefan e Damon a Mystic Falls muda a rotina de Elena e desperta segredos do passado.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span>02</span>
+          <div>
+            <h3>O despertar dos Originais</h3>
+            <p>A história da família Mikaelson ganha destaque e revela a origem de uma linhagem poderosa.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span>03</span>
+          <div>
+            <h3>A disputa por Nova Orleans</h3>
+            <p>Alianças e rivalidades colocam diferentes grupos sobrenaturais em conflito pelo controle da cidade.</p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <span>04</span>
+          <div>
+            <h3>Família e sacrifício</h3>
+            <p>As duas séries mostram que escolhas difíceis podem mudar o destino de quem amamos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section villains-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">NEM TODO PERIGO TEM ROSTO DE MONSTRO</p>
+        <h2>Vilões e <span>ameaças</span></h2>
+      </div>
+
+      <div class="villain-grid">
+        <article class="villain reveal">
+          <h3>Katherine Pierce</h3>
+          <p>Manipuladora e estrategista, costuma colocar seus próprios interesses em primeiro lugar.</p>
+        </article>
+        <article class="villain reveal">
+          <h3>Kai Parker</h3>
+          <p>Um personagem perigoso e imprevisível, capaz de transformar qualquer situação em ameaça.</p>
+        </article>
+        <article class="villain reveal">
+          <h3>Dahlia</h3>
+          <p>Uma bruxa extremamente poderosa, ligada ao passado da família Mikaelson.</p>
+        </article>
+        <article class="villain reveal">
+          <h3>Lucien Castle</h3>
+          <p>Um adversário ambicioso que desafia os limites do poder dos vampiros Originais.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="section-heading reveal">
+        <p class="eyebrow">RECORDAÇÕES</p>
+        <h2>Galeria <span>sombria</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <img class="reveal" src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/09/elenco-de-the-vampire-diaries.png?w=900&quality=90" alt="Elenco de The Vampire Diaries">
+        <img class="reveal" src="https://thumb.wikimedia.org/wikipedia/pt/thumb/9/99/Vampire_Diaries_season_2_promotional_poster.jpeg/500px-Vampire_Diaries_season_2_promotional_poster.jpeg" alt="Pôster da segunda temporada">
+        <img class="reveal" src="https://i.pinimg.com/originals/41/c3/78/41c378b9585d8f8885c5d66621103e17.jpg" alt="Imagem de divulgação das séries">
+      </div>
+    </section>
+
+    <section class="section facts-section" id="curiosidades">
+      <div class="section-heading reveal">
+        <p class="eyebrow">DETALHES DO UNIVERSO</p>
+        <h2>Curiosidades <span>sobrenaturais</span></h2>
+      </div>
+
+      <div class="facts-grid">
+        <article class="fact reveal">
+          <span>✦</span>
+          <h3>Universo conectado</h3>
+          <p>The Originals é uma série derivada de The Vampire Diaries.</p>
+        </article>
+        <article class="fact reveal">
+          <span>✦</span>
+          <h3>Duas cidades</h3>
+          <p>Mystic Falls e Nova Orleans são cenários fundamentais para as histórias.</p>
+        </article>
+        <article class="fact reveal">
+          <span>✦</span>
+          <h3>Laços eternos</h3>
+          <p>Família, amizade, amor e lealdade aparecem mesmo em meio a conflitos sobrenaturais.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section comparison-section" id="comparacao">
+      <div class="section-heading reveal">
+        <p class="eyebrow">LADOS DIFERENTES DA MESMA HISTÓRIA</p>
+        <h2>Comparando as <span>séries</span></h2>
+      </div>
+
+      <div class="comparison-table-wrap reveal">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>The Vampire Diaries</th>
+              <th>The Originals</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cenário principal</td><td>Mystic Falls</td><td>Nova Orleans</td></tr>
+            <tr><td>Foco</td><td>Amor, amadurecimento e mistério</td><td>Família, poder e legado</td></tr>
+            <tr><td>Temporadas</td><td>8</td><td>5</td></tr>
+            <tr><td>Episódios</td><td>171</td><td>92</td></tr>
+            <tr><td>Exibição</td><td>2009–2017</td><td>2013–2018</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pros-cons">
+        <article class="reveal">
+          <h3>Pontos positivos</h3>
+          <ul>
+            <li>Personagens marcantes e complexos.</li>
+            <li>Mistérios e reviravoltas.</li>
+            <li>Relações emocionais e conflitos.</li>
+          </ul>
+        </article>
+        <article class="reveal">
+          <h3>Pontos que dividem opiniões</h3>
+          <ul>
+            <li>Algumas histórias se prolongam bastante.</li>
+            <li>Há decisões de personagens que podem frustrar o público.</li>
+            <li>O ritmo varia entre temporadas.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section lessons-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">O QUE FICA DEPOIS DA HISTÓRIA?</p>
+        <h2>O que podemos <span>aprender</span></h2>
+      </div>
+      <p class="intro-text reveal">
+        Apesar dos elementos fantásticos, as séries abordam temas próximos da vida real:
+        amizade, perdão, responsabilidade, consequências das escolhas e a importância
+        de proteger quem amamos. Elas também mostram que ninguém é definido apenas
+        pelos erros do passado.
+      </p>
+    </section>
+
+    <section class="section game-section" id="jogo">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SUA ESCOLHA MUDA TUDO</p>
+        <h2>O Segredo dos <span>Imortais</span></h2>
+        <p>Um pequeno jogo de aventura inspirado no clima das séries. Leia a situação e escolha seu caminho.</p>
+      </div>
+
+      <div class="game-panel reveal">
+        <div class="game-top">
+          <span id="gameChapter">PRÓLOGO</span>
+          <span>PONTOS: <b id="gamePoints">0</b></span>
+        </div>
+        <h3 id="gameTitle">Uma carta misteriosa</h3>
+        <p id="gameStory">Você encontra uma carta antiga na porta de casa. Nela, há um símbolo que parece ligado a Mystic Falls. O que você faz?</p>
+        <div class="game-choices" id="gameChoices"></div>
+        <p class="game-feedback" id="gameFeedback" aria-live="polite"></p>
+        <button class="button button-outline restart-button" id="restartGame">RECOMEÇAR A AVENTURA</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#inicio">UNIVERSO <span>SOBRENATURAL</span></a>
+    <p>Projeto autoral escolar • Feito com criatividade e dedicação.</p>
+    <p class="copyright">The Vampire Diaries e The Originals pertencem aos seus respectivos criadores e detentores de direitos. Este é um projeto de fã, sem fins comerciais.</p>
+    <a class="back-top" href="#inicio" aria-label="Voltar ao topo">↑</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

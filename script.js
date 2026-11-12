@@ -1,600 +1,277 @@
 
-/* =========================================
-   UNIVERSO SOBRENATURAL
-   THE VAMPIRE DIARIES + THE ORIGINALS
-========================================= */
+// UNIVERSO SOBRENATURAL — INTERAÇÕES (SEM MÚSICA)
 
+const intro = document.getElementById('intro');
+const enterButton = document.getElementById('enterButton');
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
 
-/* =========================================
-   1. ENTRADA CINEMATOGRÁFICA
-========================================= */
+// ENTRADA DO SITE
+if (enterButton && intro) {
+  enterButton.addEventListener('click', () => {
+    intro.classList.add('hidden');
+    document.body.classList.remove('locked');
 
-const intro = document.getElementById("intro");
-const enterButton = document.getElementById("enterButton");
+    document.getElementById('inicio')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  });
+}
 
-enterButton.addEventListener("click", function () {
+// MENU PARA CELULARES
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('open');
 
-    intro.classList.add("hidden");
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '×' : '☰';
+  });
 
-    // Rola até o início do site
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
     });
+  });
+}
 
-});
-
-
-/* =========================================
-   2. MÚSICA DE FUNDO
-========================================= */
-
-const musicButton = document.getElementById("musicButton");
-const backgroundMusic = document.getElementById("backgroundMusic");
-
-let musicPlaying = false;
-
-musicButton.addEventListener("click", function () {
-
-    if (!musicPlaying) {
-
-        backgroundMusic.play()
-            .then(function () {
-
-                musicPlaying = true;
-                musicButton.textContent = "♫ Música: ON";
-
-            })
-            .catch(function () {
-
-                alert("Não foi possível reproduzir a música. Confira o arquivo assets/musica.mp3.");
-
-            });
-
-    } else {
-
-        backgroundMusic.pause();
-
-        musicPlaying = false;
-        musicButton.textContent = "♫ Música: OFF";
-
-    }
-
-});
-
-
-/* =========================================
-   3. MENU DE NAVEGAÇÃO
-========================================= */
-
-const menuLinks = document.querySelectorAll(".navbar a");
-
-menuLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        menuLinks.forEach(function (item) {
-            item.classList.remove("active");
-        });
-
-        link.classList.add("active");
-
+// ANIMAÇÃO DOS ELEMENTOS AO APARECER NA TELA
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-
-});
-
-
-/* =========================================
-   4. ANIMAÇÃO AO ROLAR A PÁGINA
-========================================= */
-
-const animatedElements = document.querySelectorAll(
-    ".universe-card, .character-card, .info-box, .reflection, .pros-cons, .curiosity-card, .comparison-card"
+  },
+  { threshold: 0.12 }
 );
 
-const observer = new IntersectionObserver(function (entries) {
+document.querySelectorAll('.reveal').forEach(element => {
+  revealObserver.observe(element);
+});
 
-    entries.forEach(function (entry) {
+// DESTACA O LINK DA SEÇÃO ATUAL
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.nav a');
 
-        if (entry.isIntersecting) {
-
-            entry.target.style.animation = "aparecer 1s ease forwards";
-
-            observer.unobserve(entry.target);
-
-        }
-
+const sectionObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle(
+            'active',
+            link.getAttribute('href') === `#${entry.target.id}`
+          );
+        });
+      }
     });
+  },
+  { rootMargin: '-35% 0px -55% 0px' }
+);
 
-}, {
-    threshold: 0.15
+sections.forEach(section => {
+  sectionObserver.observe(section);
 });
 
-animatedElements.forEach(function (element) {
-
-    element.style.opacity = "0";
-
-    observer.observe(element);
-
-});
-
-
-/* =========================================
-   5. BOTÃO VOLTAR AO TOPO
-========================================= */
-
-const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", function () {
-
-    if (window.scrollY > 400) {
-
-        backToTop.classList.add("show");
-
-    } else {
-
-        backToTop.classList.remove("show");
-
-    }
-
-});
-
-backToTop.addEventListener("click", function () {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
-/* =========================================
-   6. JOGO: O SEGREDO DOS IMORTAIS
-========================================= */
-
-const startGame = document.getElementById("startGame");
-const gameArea = document.getElementById("gameArea");
-
-const gameTitle = document.getElementById("gameTitle");
-const gameStory = document.getElementById("gameStory");
-const gameChoices = document.getElementById("gameChoices");
-
-const gameChapter = document.getElementById("gameChapter");
-const gamePoints = document.getElementById("gamePoints");
-const gameFeedback = document.getElementById("gameFeedback");
-
-let points = 0;
-let chapter = 0;
-let life = 3;
-let inventory = [];
-
-
-/* HISTÓRIA DO JOGO */
-
-const chapters = [
-
-    // CAPÍTULO 1
-    {
-        title: "O DESPERTAR",
-
-        story: "Uma mensagem misteriosa chega até você. Ela diz que um antigo segredo ameaça Mystic Falls e Nova Orleans. Onde você deseja começar sua investigação?",
-
-        choices: [
-
-            {
-                text: "🩸 Investigar Mystic Falls",
-
-                points: 10,
-
-                feedback: "Você chegou a Mystic Falls. Damon percebe sua presença e decide observar você.",
-
-                next: 1
-            },
-
-            {
-                text: "🌙 Investigar Nova Orleans",
-
-                points: 10,
-
-                feedback: "Você chegou a Nova Orleans. Klaus descobre que alguém está procurando um segredo da família Mikaelson.",
-
-                next: 1
-            }
-
-        ]
-    },
-
-
-    // CAPÍTULO 2
-    {
-        title: "A ALIANÇA",
-
-        story: "Você encontra dois caminhos. Uma pessoa oferece ajuda, mas você precisa decidir em quem confiar. Qual é sua escolha?",
-
-        choices: [
-
-            {
-                text: "🦇 Confiar em Damon",
-
-                points: 10,
-
-                feedback: "Damon aceita ajudar, mas avisa que ninguém deve confiar completamente nos outros.",
-
-                next: 2
-            },
-
-            {
-                text: "👑 Confiar em Elijah",
-
-                points: 15,
-
-                feedback: "Elijah promete proteger você. Sua elegância esconde muitos segredos.",
-
-                next: 2
-            }
-
-        ]
-    },
-
-
-    // CAPÍTULO 3
-    {
-        title: "O SEGREDO DAS BRUXAS",
-
-        story: "Uma bruxa revela que o segredo só poderá ser descoberto por quem conhece o mundo sobrenatural. Qual criatura é considerada uma combinação de vampiro e lobisomem?",
-
-        choices: [
-
-            {
-                text: "Uma bruxa",
-
-                points: 0,
-
-                feedback: "Resposta incorreta! Uma bruxa é uma criatura mágica.",
-
-                next: 3
-            },
-
-            {
-                text: "Um híbrido",
-
-                points: 20,
-
-                feedback: "Resposta correta! Klaus Mikaelson é um híbrido de vampiro e lobisomem.",
-
-                next: 3
-            },
-
-            {
-                text: "Um vampiro original",
-
-                points: 0,
-
-                feedback: "Resposta incorreta! Os Originais são os primeiros vampiros.",
-
-                next: 3
-            }
-
-        ]
-    },
-
-
-    // CAPÍTULO 4
-    {
-        title: "O DESAFIO DA IMORTALIDADE",
-
-        story: "Você encontra uma antiga mensagem: qual é o nome da família dos primeiros vampiros apresentados no universo de Diários de um Vampiro?",
-
-        choices: [
-
-            {
-                text: "Salvatore",
-
-                points: 0,
-
-                feedback: "Não é essa! Os Salvatore são irmãos vampiros, mas não são a família dos primeiros vampiros.",
-
-                next: 4
-            },
-
-            {
-                text: "Mikaelson",
-
-                points: 20,
-
-                feedback: "Correto! A família Mikaelson é conhecida como a família dos Originais.",
-
-                next: 4
-            },
-
-            {
-                text: "Bennett",
-
-                points: 0,
-
-                feedback: "Não! A família Bennett é ligada à bruxaria.",
-
-                next: 4
-            }
-
-        ]
-    },
-
-
-    // CAPÍTULO 5
-    {
-        title: "A ESCOLHA FINAL",
-
-        story: "Você finalmente encontra o segredo. Uma magia antiga ameaça destruir os dois mundos. O que você decide fazer?",
-
-        choices: [
-
-            {
-                text: "❤️ Salvar todos, mesmo com um grande sacrifício",
-
-                points: 30,
-
-                feedback: "Você escolheu proteger seus aliados. Sua coragem mudou o destino dos dois universos.",
-
-                ending: "good"
-            },
-
-            {
-                text: "🩸 Usar o poder para dominar os dois mundos",
-
-                points: 5,
-
-                feedback: "Você escolheu o poder. Agora todos temem seu nome.",
-
-                ending: "dark"
-            },
-
-            {
-                text: "🔮 Descobrir a origem da magia",
-
-                points: 40,
-
-                feedback: "Você descobriu uma verdade que ninguém conhecia. O segredo dos imortais finalmente foi revelado.",
-
-                ending: "secret"
-            }
-
-        ]
-    }
-
+// JOGO: O SEGREDO DOS IMORTAIS
+const game = {
+  chapter: 0,
+  points: 0,
+  title: document.getElementById('gameTitle'),
+  story: document.getElementById('gameStory'),
+  choices: document.getElementById('gameChoices'),
+  chapterLabel: document.getElementById('gameChapter'),
+  pointsLabel: document.getElementById('gamePoints'),
+  feedback: document.getElementById('gameFeedback'),
+  restart: document.getElementById('restartGame')
+};
+
+// HISTÓRIA E ESCOLHAS DO JOGO
+const adventure = [
+  {
+    label: 'CAPÍTULO 1 — A CARTA',
+    title: 'Uma carta misteriosa',
+    story: 'Você encontra uma carta antiga na porta de casa. Nela, há um símbolo ligado a Mystic Falls. O que você faz?',
+    choices: [
+      {
+        text: 'Investigar a biblioteca antiga',
+        next: 1,
+        points: 2,
+        feedback: 'Você encontra um livro com o mesmo símbolo. Uma pista importante!'
+      },
+      {
+        text: 'Procurar ajuda de uma pessoa de confiança',
+        next: 1,
+        points: 1,
+        feedback: 'Com ajuda, você descobre que o símbolo pertence a uma família muito antiga.'
+      }
+    ]
+  },
+
+  {
+    label: 'CAPÍTULO 2 — O SÍMBOLO',
+    title: 'Um segredo escondido',
+    story: 'O livro revela que existe um objeto capaz de abrir uma passagem secreta. Você precisa encontrar a chave antes do anoitecer.',
+    choices: [
+      {
+        text: 'Seguir as marcas no mapa',
+        next: 2,
+        points: 2,
+        feedback: 'As marcas levam você até uma cripta escondida.'
+      },
+      {
+        text: 'Examinar o símbolo com cuidado',
+        next: 2,
+        points: 1,
+        feedback: 'Você decifra uma mensagem: “a verdade está sob a pedra”.'
+      }
+    ]
+  },
+
+  {
+    label: 'CAPÍTULO 3 — A CRIPTA',
+    title: 'A porta de pedra',
+    story: 'Na cripta, uma porta antiga está trancada. Há duas inscrições: “coragem” e “sabedoria”. Qual caminho você escolhe?',
+    choices: [
+      {
+        text: 'Escolher coragem e abrir a porta',
+        next: 3,
+        points: 1,
+        feedback: 'A porta range e se abre. Você entra, mas faz barulho.'
+      },
+      {
+        text: 'Usar a pista e procurar um mecanismo',
+        next: 3,
+        points: 2,
+        feedback: 'Você encontra uma alavanca escondida e abre a porta silenciosamente.'
+      }
+    ]
+  },
+
+  {
+    label: 'CAPÍTULO 4 — A REVELAÇÃO',
+    title: 'O guardião',
+    story: 'Um guardião aparece e diz que só permitirá sua passagem se você responder: o que mantém uma família unida mesmo nos momentos difíceis?',
+    choices: [
+      {
+        text: 'Poder e riqueza',
+        next: 4,
+        points: 0,
+        feedback: 'O guardião balança a cabeça. Talvez exista uma resposta mais importante.'
+      },
+      {
+        text: 'Confiança, amor e lealdade',
+        next: 4,
+        points: 3,
+        feedback: 'O guardião sorri. Você compreendeu o verdadeiro segredo.'
+      }
+    ]
+  },
+
+  {
+    label: 'CAPÍTULO 5 — O DESTINO',
+    title: 'A escolha final',
+    story: 'Você encontra o objeto misterioso. Ele pode trazer poder, mas também pode colocar muitas vidas em perigo. O que decide fazer?',
+    choices: [
+      {
+        text: 'Destruir o objeto para proteger todos',
+        ending: 'hero',
+        points: 2,
+        feedback: 'Você escolheu proteger os outros, mesmo abrindo mão do poder.'
+      },
+      {
+        text: 'Guardar o objeto e estudar seu poder',
+        ending: 'wise',
+        points: 1,
+        feedback: 'Você decide agir com cautela e assume a responsabilidade pelo objeto.'
+      },
+      {
+        text: 'Usar o objeto para conquistar poder',
+        ending: 'dark',
+        points: 0,
+        feedback: 'O poder agora está em suas mãos, mas o preço pode ser alto.'
+      }
+    ]
+  }
 ];
 
+// MOSTRA O CAPÍTULO ATUAL
+function renderGame() {
+  const step = adventure[game.chapter];
 
-/* =========================================
-   7. INICIAR JOGO
-========================================= */
+  game.chapterLabel.textContent = step.label;
+  game.title.textContent = step.title;
+  game.story.textContent = step.story;
+  game.pointsLabel.textContent = game.points;
+  game.feedback.textContent = '';
+  game.choices.innerHTML = '';
 
-startGame.addEventListener("click", function () {
+  step.choices.forEach(choice => {
+    const button = document.createElement('button');
 
-    points = 0;
-    chapter = 0;
-    life = 3;
-    inventory = [];
+    button.className = 'choice-button';
+    button.type = 'button';
+    button.textContent = choice.text;
 
-    gameArea.classList.add("active");
-
-    gameArea.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+    button.addEventListener('click', () => {
+      chooseGameOption(choice);
     });
 
-    showChapter();
-
-});
-
-
-/* =========================================
-   8. MOSTRAR CAPÍTULOS
-========================================= */
-
-function showChapter() {
-
-    const current = chapters[chapter];
-
-    gameTitle.textContent = current.title;
-
-    gameStory.textContent = current.story;
-
-    gameChapter.textContent = "CAPÍTULO " + (chapter + 1);
-
-    gamePoints.textContent = points;
-
-    gameFeedback.textContent = "";
-
-    gameChoices.innerHTML = "";
-
-    current.choices.forEach(function (choice) {
-
-        const button = document.createElement("button");
-
-        button.textContent = choice.text;
-
-        button.addEventListener("click", function () {
-
-            selectChoice(choice);
-
-        });
-
-        gameChoices.appendChild(button);
-
-    });
-
+    game.choices.appendChild(button);
+  });
 }
 
+// PROCESSA A ESCOLHA DO JOGADOR
+function chooseGameOption(choice) {
+  game.points += choice.points || 0;
+  game.pointsLabel.textContent = game.points;
+  game.feedback.textContent = choice.feedback || '';
 
-/* =========================================
-   9. ESCOLHER UMA RESPOSTA
-========================================= */
+  // SE O JOGADOR CHEGOU AO FINAL
+  if (choice.ending) {
+    const endings = {
+      hero: 'FINAL: O CORAÇÃO DO HERÓI — Sua coragem protegeu todos. A maior força não era o objeto, mas sua escolha.',
+      wise: 'FINAL: O GUARDIÃO DO SEGREDO — Você escolheu conhecimento e responsabilidade. Uma nova missão começa.',
+      dark: 'FINAL: A SEDE DE PODER — Você conquistou o objeto, mas agora precisa enfrentar as consequências.'
+    };
 
-function selectChoice(choice) {
+    game.chapterLabel.textContent = 'FIM DA AVENTURA';
+    game.title.textContent = endings[choice.ending];
+    game.story.textContent =
+      `Sua pontuação final foi ${game.points}. Obrigado por jogar!`;
 
-    points += choice.points;
+    game.choices.innerHTML = '';
+    return;
+  }
 
-    gamePoints.textContent = points;
+  // EVITA QUE O JOGADOR CLIQUE VÁRIAS VEZES
+  game.choices.querySelectorAll('button').forEach(button => {
+    button.disabled = true;
+  });
 
-    gameFeedback.textContent = choice.feedback;
-
-    // Adiciona uma pista ao inventário
-    inventory.push(choice.text);
-
-    // Bloqueia as opções após a escolha
-    const buttons = gameChoices.querySelectorAll("button");
-
-    buttons.forEach(function (button) {
-
-        button.disabled = true;
-
-        button.style.opacity = "0.5";
-
-    });
-
-
-    // Verifica se chegou ao final
-    if (choice.ending) {
-
-        setTimeout(function () {
-
-            showEnding(choice.ending);
-
-        }, 1500);
-
-        return;
-
-    }
-
-
-    chapter = choice.next;
-
-    const nextButton = document.createElement("button");
-
-    nextButton.textContent = "CONTINUAR A AVENTURA";
-
-    nextButton.addEventListener("click", function () {
-
-        showChapter();
-
-    });
-
-    gameChoices.appendChild(nextButton);
-
+  window.setTimeout(() => {
+    game.chapter = choice.next;
+    renderGame();
+  }, 1100);
 }
 
-
-/* =========================================
-   10. FINAIS DA AVENTURA
-========================================= */
-
-function showEnding(ending) {
-
-    gameChoices.innerHTML = "";
-
-    gameChapter.textContent = "AVENTURA CONCLUÍDA";
-
-    if (ending === "good") {
-
-        gameTitle.textContent = "FINAL: O SACRIFÍCIO DOS HERÓIS";
-
-        gameStory.textContent =
-            "Você conseguiu salvar os dois universos! " +
-            "Sua coragem e lealdade fizeram a diferença. " +
-            "Mystic Falls e Nova Orleans estão em paz.";
-
-    }
-
-    else if (ending === "dark") {
-
-        gameTitle.textContent = "FINAL: O REINADO DAS SOMBRAS";
-
-        gameStory.textContent =
-            "Você escolheu o poder acima de tudo. " +
-            "Agora os dois universos estão sob seu domínio. " +
-            "Mas será que valeu a pena?";
-
-    }
-
-    else if (ending === "secret") {
-
-        gameTitle.textContent = "FINAL SECRETO: A VERDADE ETERNA";
-
-        gameStory.textContent =
-            "Você descobriu a origem da magia e revelou " +
-            "o maior segredo dos imortais. " +
-            "Uma nova história começa.";
-
-    }
-
-
-    const result = document.createElement("p");
-
-    result.textContent = "Sua pontuação final: " + points + " pontos.";
-
-    result.style.marginTop = "20px";
-
-    result.style.color = "#d9b5e8";
-
-    gameChoices.appendChild(result);
-
-
-    const restartButton = document.createElement("button");
-
-    restartButton.textContent = "JOGAR NOVAMENTE";
-
-    restartButton.addEventListener("click", function () {
-
-        points = 0;
-        chapter = 0;
-        life = 3;
-        inventory = [];
-
-        showChapter();
-
-    });
-
-    gameChoices.appendChild(restartButton);
-
+// REINICIA O JOGO
+function restartGame() {
+  game.chapter = 0;
+  game.points = 0;
+  renderGame();
 }
 
+if (game.restart) {
+  game.restart.addEventListener('click', restartGame);
+}
 
-/* =========================================
-   11. EFEITO NOS BOTÕES
-========================================= */
+if (game.title && game.story && game.choices) {
+  renderGame();
+}
 
-const allButtons = document.querySelectorAll("button");
-
-allButtons.forEach(function (button) {
-
-    button.addEventListener("mouseenter", function () {
-
-        button.style.transition = "0.3s";
-
-    });
-
-});
-
-
-/* =========================================
-   FIM DO SCRIPT
-   UNIVERSO SOBRENATURAL
-========================================= */
-
-console.log("🩸 Universo Sobrenatural carregado!");
-console.log("🦇 Prepare-se para entrar no mundo dos imortais.");
-
-const musicButton = document.getElementById("musicButton");
-const backgroundMusic = document.getElementById("backgroundMusic");
-
-musicButton.addEventListener("click", () => {
-    if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        musicButton.textContent = "🔇 Desligar música";
-    } else {
-        backgroundMusic.pause();
-        musicButton.textContent = "🔊 Ligar música";
-    }
-});
+// A TELA INICIAL FICA ABERTA ATÉ O CLIQUE NO BOTÃO
+document.body.classList.add('locked');
