@@ -1,277 +1,343 @@
 
-// UNIVERSO SOBRENATURAL — INTERAÇÕES (SEM MÚSICA)
+// UNIVERSO SOBRENATURAL — INTERAÇÕES DO SITE (SEM MÚSICA)
 
-const intro = document.getElementById('intro');
-const enterButton = document.getElementById('enterButton');
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
+// 1. TELA DE ENTRADA
+const intro = document.getElementById("intro");
+const enterButton = document.getElementById("enterButton");
 
-// ENTRADA DO SITE
-if (enterButton && intro) {
-  enterButton.addEventListener('click', () => {
-    intro.classList.add('hidden');
-    document.body.classList.remove('locked');
+document.body.classList.add("intro-open");
 
-    document.getElementById('inicio')
-      ?.scrollIntoView({ behavior: 'smooth' });
-  });
-}
-
-// MENU PARA CELULARES
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('open');
-
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-    menuToggle.textContent = isOpen ? '×' : '☰';
-  });
-
-  mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.textContent = '☰';
-    });
-  });
-}
-
-// ANIMAÇÃO DOS ELEMENTOS AO APARECER NA TELA
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-document.querySelectorAll('.reveal').forEach(element => {
-  revealObserver.observe(element);
+enterButton?.addEventListener("click", () => {
+  intro.classList.add("hidden");
+  document.body.classList.remove("intro-open");
 });
 
-// DESTACA O LINK DA SEÇÃO ATUAL
-const sections = document.querySelectorAll('main section[id]');
-const navLinks = document.querySelectorAll('.nav a');
+// 2. MENU ADAPTADO PARA CELULAR
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
 
-const sectionObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.toggle(
-            'active',
-            link.getAttribute('href') === `#${entry.target.id}`
-          );
-        });
-      }
+menuToggle?.addEventListener("click", () => {
+  const opened = mainNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(opened));
+  menuToggle.textContent = opened ? "×" : "☰";
+});
+
+mainNav?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+    if (menuToggle) menuToggle.textContent = "☰";
+  });
+});
+
+// 3. ANIMAÇÃO DAS SEÇÕES
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(item => {
+  revealObserver.observe(item);
+});
+
+// 4. DESTAQUE DO MENU
+const navLinks = document.querySelectorAll(".nav a");
+const pageSections = document.querySelectorAll("main section[id]");
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    navLinks.forEach(link => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === `#${entry.target.id}`
+      );
     });
-  },
-  { rootMargin: '-35% 0px -55% 0px' }
-);
+  });
+}, { rootMargin: "-35% 0px -55% 0px" });
 
-sections.forEach(section => {
+pageSections.forEach(section => {
   sectionObserver.observe(section);
 });
 
-// JOGO: O SEGREDO DOS IMORTAIS
-const game = {
-  chapter: 0,
-  points: 0,
-  title: document.getElementById('gameTitle'),
-  story: document.getElementById('gameStory'),
-  choices: document.getElementById('gameChoices'),
-  chapterLabel: document.getElementById('gameChapter'),
-  pointsLabel: document.getElementById('gamePoints'),
-  feedback: document.getElementById('gameFeedback'),
-  restart: document.getElementById('restartGame')
+// 5. GALERIA: AMPLIAR E FECHAR IMAGENS
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
+
+document.querySelectorAll(".gallery-item").forEach(button => {
+  button.addEventListener("click", () => {
+    const image = button.querySelector("img");
+
+    lightboxImage.src = button.dataset.full || image.src;
+    lightboxImage.alt = image.alt;
+
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightboxImage.src = "";
+  document.body.style.overflow = "";
+}
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", event => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (
+    event.key === "Escape" &&
+    lightbox.classList.contains("open")
+  ) {
+    closeLightbox();
+  }
+});
+
+// 6. JOGO INTERATIVO: O SEGREDO DOS IMORTAIS
+
+const gameElements = {
+  chapter: document.getElementById("gameChapter"),
+  points: document.getElementById("gamePoints"),
+  progress: document.getElementById("gameProgress"),
+  title: document.getElementById("gameTitle"),
+  story: document.getElementById("gameStory"),
+  choices: document.getElementById("gameChoices"),
+  feedback: document.getElementById("gameFeedback"),
+  restart: document.getElementById("restartGame")
 };
 
-// HISTÓRIA E ESCOLHAS DO JOGO
-const adventure = [
+// HISTÓRIA DO JOGO
+const chapters = [
   {
-    label: 'CAPÍTULO 1 — A CARTA',
-    title: 'Uma carta misteriosa',
-    story: 'Você encontra uma carta antiga na porta de casa. Nela, há um símbolo ligado a Mystic Falls. O que você faz?',
+    label: "CAPÍTULO 1 DE 5",
+    title: "A Carta Misteriosa",
+    story: "Você encontra uma carta antiga na porta de casa. Nela, há um símbolo que parece estar relacionado a Mystic Falls. O que você faz?",
     choices: [
       {
-        text: 'Investigar a biblioteca antiga',
+        text: "Investigar a biblioteca antiga",
         next: 1,
         points: 2,
-        feedback: 'Você encontra um livro com o mesmo símbolo. Uma pista importante!'
+        feedback: "Você encontra um livro com o mesmo símbolo. Uma pista importante!"
       },
       {
-        text: 'Procurar ajuda de uma pessoa de confiança',
+        text: "Procurar ajuda de alguém de confiança",
         next: 1,
         points: 1,
-        feedback: 'Com ajuda, você descobre que o símbolo pertence a uma família muito antiga.'
+        feedback: "Com ajuda, você descobre que o símbolo pertence a uma família muito antiga."
       }
     ]
   },
 
   {
-    label: 'CAPÍTULO 2 — O SÍMBOLO',
-    title: 'Um segredo escondido',
-    story: 'O livro revela que existe um objeto capaz de abrir uma passagem secreta. Você precisa encontrar a chave antes do anoitecer.',
+    label: "CAPÍTULO 2 DE 5",
+    title: "O Símbolo Esquecido",
+    story: "O livro revela que existe um objeto capaz de abrir uma passagem secreta. Você precisa encontrar a chave antes do anoitecer.",
     choices: [
       {
-        text: 'Seguir as marcas no mapa',
+        text: "Seguir as marcas no mapa",
         next: 2,
         points: 2,
-        feedback: 'As marcas levam você até uma cripta escondida.'
+        feedback: "As marcas levam você até uma cripta escondida."
       },
       {
-        text: 'Examinar o símbolo com cuidado',
+        text: "Examinar o símbolo com cuidado",
         next: 2,
         points: 1,
-        feedback: 'Você decifra uma mensagem: “a verdade está sob a pedra”.'
+        feedback: "Você decifra uma mensagem: a verdade está sob a pedra."
       }
     ]
   },
 
   {
-    label: 'CAPÍTULO 3 — A CRIPTA',
-    title: 'A porta de pedra',
-    story: 'Na cripta, uma porta antiga está trancada. Há duas inscrições: “coragem” e “sabedoria”. Qual caminho você escolhe?',
+    label: "CAPÍTULO 3 DE 5",
+    title: "A Cripta",
+    story: "Na cripta, uma porta antiga está trancada. Há duas inscrições: coragem e sabedoria. Qual caminho você escolhe?",
     choices: [
       {
-        text: 'Escolher coragem e abrir a porta',
+        text: "Escolher coragem e abrir a porta",
         next: 3,
         points: 1,
-        feedback: 'A porta range e se abre. Você entra, mas faz barulho.'
+        feedback: "A porta range e se abre. Você entra, mas faz barulho."
       },
       {
-        text: 'Usar a pista e procurar um mecanismo',
+        text: "Procurar um mecanismo escondido",
         next: 3,
         points: 2,
-        feedback: 'Você encontra uma alavanca escondida e abre a porta silenciosamente.'
+        feedback: "Você encontra uma alavanca escondida e abre a porta silenciosamente."
       }
     ]
   },
 
   {
-    label: 'CAPÍTULO 4 — A REVELAÇÃO',
-    title: 'O guardião',
-    story: 'Um guardião aparece e diz que só permitirá sua passagem se você responder: o que mantém uma família unida mesmo nos momentos difíceis?',
+    label: "CAPÍTULO 4 DE 5",
+    title: "O Guardião",
+    story: "Um guardião aparece e pergunta: o que mantém uma família unida mesmo nos momentos mais difíceis?",
     choices: [
       {
-        text: 'Poder e riqueza',
+        text: "Poder e riqueza",
         next: 4,
         points: 0,
-        feedback: 'O guardião balança a cabeça. Talvez exista uma resposta mais importante.'
+        feedback: "O guardião balança a cabeça. Talvez exista uma resposta mais importante."
       },
       {
-        text: 'Confiança, amor e lealdade',
+        text: "Confiança, amor e lealdade",
         next: 4,
         points: 3,
-        feedback: 'O guardião sorri. Você compreendeu o verdadeiro segredo.'
+        feedback: "O guardião sorri. Você compreendeu o verdadeiro segredo."
       }
     ]
   },
 
   {
-    label: 'CAPÍTULO 5 — O DESTINO',
-    title: 'A escolha final',
-    story: 'Você encontra o objeto misterioso. Ele pode trazer poder, mas também pode colocar muitas vidas em perigo. O que decide fazer?',
+    label: "CAPÍTULO 5 DE 5",
+    title: "O Destino",
+    story: "Você encontra o objeto misterioso. Ele pode trazer poder, mas também pode colocar muitas vidas em perigo. O que decide fazer?",
     choices: [
       {
-        text: 'Destruir o objeto para proteger todos',
-        ending: 'hero',
+        text: "Destruir o objeto para proteger todos",
+        ending: "hero",
         points: 2,
-        feedback: 'Você escolheu proteger os outros, mesmo abrindo mão do poder.'
+        feedback: "Você escolheu proteger os outros, mesmo abrindo mão do poder."
       },
       {
-        text: 'Guardar o objeto e estudar seu poder',
-        ending: 'wise',
+        text: "Guardar o objeto e estudar seu poder",
+        ending: "wise",
         points: 1,
-        feedback: 'Você decide agir com cautela e assume a responsabilidade pelo objeto.'
+        feedback: "Você decide agir com cautela e assume a responsabilidade pelo objeto."
       },
       {
-        text: 'Usar o objeto para conquistar poder',
-        ending: 'dark',
+        text: "Usar o objeto para conquistar poder",
+        ending: "dark",
         points: 0,
-        feedback: 'O poder agora está em suas mãos, mas o preço pode ser alto.'
+        feedback: "O poder agora está em suas mãos, mas o preço pode ser alto."
       }
     ]
   }
 ];
 
+// TRÊS FINAIS POSSÍVEIS
+const endings = {
+  hero: {
+    title: "Final: O Coração do Herói",
+    story: "Sua coragem protegeu todos. Você descobriu que a maior força não estava no objeto, mas na sua escolha."
+  },
+
+  wise: {
+    title: "Final: O Guardião do Segredo",
+    story: "Você escolheu conhecimento e responsabilidade. O objeto está protegido, mas uma nova missão pode começar."
+  },
+
+  dark: {
+    title: "Final: A Sede de Poder",
+    story: "Você conquistou o objeto, mas agora precisa enfrentar as consequências da sua decisão."
+  }
+};
+
+let currentChapter = 0;
+let score = 0;
+let gameFinished = false;
+
 // MOSTRA O CAPÍTULO ATUAL
-function renderGame() {
-  const step = adventure[game.chapter];
+function renderChapter() {
+  const chapter = chapters[currentChapter];
 
-  game.chapterLabel.textContent = step.label;
-  game.title.textContent = step.title;
-  game.story.textContent = step.story;
-  game.pointsLabel.textContent = game.points;
-  game.feedback.textContent = '';
-  game.choices.innerHTML = '';
+  gameFinished = false;
 
-  step.choices.forEach(choice => {
-    const button = document.createElement('button');
+  gameElements.chapter.textContent = chapter.label;
+  gameElements.points.textContent = score;
 
-    button.className = 'choice-button';
-    button.type = 'button';
+  gameElements.progress.style.width =
+    `${((currentChapter + 1) / chapters.length) * 100}%`;
+
+  gameElements.title.textContent = chapter.title;
+  gameElements.story.textContent = chapter.story;
+  gameElements.feedback.textContent = "";
+
+  gameElements.choices.replaceChildren();
+
+  chapter.choices.forEach(choice => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "choice-button";
     button.textContent = choice.text;
 
-    button.addEventListener('click', () => {
-      chooseGameOption(choice);
+    button.addEventListener("click", () => {
+      selectChoice(choice);
     });
 
-    game.choices.appendChild(button);
+    gameElements.choices.appendChild(button);
   });
 }
 
 // PROCESSA A ESCOLHA DO JOGADOR
-function chooseGameOption(choice) {
-  game.points += choice.points || 0;
-  game.pointsLabel.textContent = game.points;
-  game.feedback.textContent = choice.feedback || '';
+function selectChoice(choice) {
+  if (gameFinished) return;
 
-  // SE O JOGADOR CHEGOU AO FINAL
-  if (choice.ending) {
-    const endings = {
-      hero: 'FINAL: O CORAÇÃO DO HERÓI — Sua coragem protegeu todos. A maior força não era o objeto, mas sua escolha.',
-      wise: 'FINAL: O GUARDIÃO DO SEGREDO — Você escolheu conhecimento e responsabilidade. Uma nova missão começa.',
-      dark: 'FINAL: A SEDE DE PODER — Você conquistou o objeto, mas agora precisa enfrentar as consequências.'
-    };
+  score += choice.points || 0;
 
-    game.chapterLabel.textContent = 'FIM DA AVENTURA';
-    game.title.textContent = endings[choice.ending];
-    game.story.textContent =
-      `Sua pontuação final foi ${game.points}. Obrigado por jogar!`;
+  gameElements.points.textContent = score;
+  gameElements.feedback.textContent = choice.feedback;
 
-    game.choices.innerHTML = '';
-    return;
-  }
-
-  // EVITA QUE O JOGADOR CLIQUE VÁRIAS VEZES
-  game.choices.querySelectorAll('button').forEach(button => {
+  // EVITA CLIQUES REPETIDOS
+  gameElements.choices.querySelectorAll("button").forEach(button => {
     button.disabled = true;
   });
 
+  // VERIFICA SE O JOGADOR CHEGOU AO FINAL
+  if (choice.ending) {
+    gameFinished = true;
+
+    const ending = endings[choice.ending];
+
+    gameElements.chapter.textContent = "FIM DA AVENTURA";
+    gameElements.progress.style.width = "100%";
+    gameElements.title.textContent = ending.title;
+
+    gameElements.story.textContent =
+      `${ending.story} Sua pontuação final foi ${score} pontos.`;
+
+    gameElements.choices.replaceChildren();
+
+    gameElements.feedback.textContent =
+      "A aventura terminou. Você pode jogar novamente e descobrir outro final.";
+
+    return;
+  }
+
+  // AVANÇA PARA O PRÓXIMO CAPÍTULO
   window.setTimeout(() => {
-    game.chapter = choice.next;
-    renderGame();
-  }, 1100);
+    currentChapter = choice.next;
+    renderChapter();
+  }, 900);
 }
 
-// REINICIA O JOGO
+// RECOMEÇA A AVENTURA
 function restartGame() {
-  game.chapter = 0;
-  game.points = 0;
-  renderGame();
+  currentChapter = 0;
+  score = 0;
+  gameFinished = false;
+
+  renderChapter();
 }
 
-if (game.restart) {
-  game.restart.addEventListener('click', restartGame);
-}
+// BOTÃO DE RECOMEÇAR
+gameElements.restart?.addEventListener("click", restartGame);
 
-if (game.title && game.story && game.choices) {
-  renderGame();
-}
-
-// A TELA INICIAL FICA ABERTA ATÉ O CLIQUE NO BOTÃO
-document.body.classList.add('locked');
+// INICIA O JOGO
+renderChapter();
