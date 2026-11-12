@@ -1,131 +1,491 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post Social Media</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Universo Sobrenatural</title>
+
+    <meta name="description" content="Explore o universo de The Vampire Diaries e The Originals.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="phone-frame">
-    <div class="phone-screen">
+    <!-- TELA DE ENTRADA -->
+    <div id="intro" class="intro">
+        <div class="intro-content">
+            <p>UMA HISTÓRIA DE AMOR, PODER E IMORTALIDADE</p>
+            <h1>UNIVERSO SOBRENATURAL</h1>
+            <p>Dois mundos. Uma história. Infinitos segredos.</p>
 
-      <!-- Cabeçalho do Post -->
-      <div class="post-header">
-        <div class="user-info">
-          <img class="avatar-small" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVaNTa5BKP378Ge9UBB6alxdoo9CI9qdzBD8GZSHmBw-Qfldlnv8t7fScz&s=10" alt="Avatar">
-          <span class="username">ViVih</span>
+            <button id="enterButton">
+                ENTRAR NO UNIVERSO
+            </button>
         </div>
-        <div class="more-options">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="5" cy="12" r="2" />
-            <circle cx="12" cy="12" r="2" />
-            <circle cx="19" cy="12" r="2" />
-          </svg>
-        </div>
-      </div>
-
-      <!-- Mídia Principal -->
-      <div class="post-media">
-        <img class="main-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-NywUEH9RTzFuHJ1YlrLkvIT_LHBzAx8OhQtm7e0Nxg2T_cn9-JD5kHsH&s=10" alt="Post photo">
-
-        <!-- Sticker/Badge sobreposto na foto -->
-        <div class="user-badge">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXORxaq29E34wQa5o1IQfYDxd9lqYhSgmEbwULVB1MQg&s=10" alt="Badge">
-          <div class="plus-icon">+</div>
-        </div>
-      </div>
-
-      <!-- Barra de Interações -->
-      <div class="post-actions">
-        <div class="left-actions">
-          <button class="action-btn like-btn">
-            <svg viewBox="0 0 24 24">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-            <span class="like-count">1200</span>
-          </button>
-
-          <button class="action-btn">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            57
-          </button>
-
-          <button class="action-btn">
-            <svg viewBox="0 0 24 24">
-              <polyline points="17 1 21 5 17 9"></polyline>
-              <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
-              <polyline points="7 23 3 19 7 15"></polyline>
-              <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
-            </svg>
-            24
-          </button>
-
-          <button class="action-btn">
-            <svg viewBox="0 0 24 24">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-            6
-          </button>
-        </div>
-
-        <button class="action-btn">
-          <svg viewBox="0 0 24 24">
-            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Detalhes / Curtidas -->
-      <div class="post-details">
-        <p class="likes">Curtido por <strong>emiih.s</strong>, <strong>santxs_v1</strong> e <strong id="other-likes">outras pessoas</strong></p>
-      </div>
-
-      <!-- Navegação Inferior -->
-      <div class="nav-bar">
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          </svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="8" y1="12" x2="16" y2="12"></line>
-          </svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24">
-            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-          </svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <audio id="backgroundMusic" loop>
+    <source src="assets/musica.m4a" type="audio/mp4">
+</audio>
+
+<button id="musicButton">
+    🔊 Ligar música
+</button>
+    
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">UNIVERSO SOBRENATURAL</div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#diarios">Diários de um Vampiro</a>
+            <a href="#originais">Os Originais</a>
+            <a href="#personagens">Personagens</a>
+            <a href="#viloes">Vilões</a>
+            <a href="#comparacao">Comparação</a>
+            <a href="#curiosidades">Curiosidades</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#jogo">Jogo</a>
+        </nav>
+
+        <button id="musicButton">♫ Música: desligada</button>
+    </header>
+
+    <main>
+
+        <!-- INÍCIO -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <p>ENTRE NO MUNDO DAS CRIATURAS SOBRENATURAIS</p>
+
+                <h1>O AMOR PODE SER ETERNO. O PERIGO TAMBÉM.</h1>
+
+                <p>
+                    Conheça os segredos, romances, batalhas e personagens
+                    de The Vampire Diaries e The Originals.
+                </p>
+
+                <a href="#diarios" class="botao">EXPLORAR</a>
+            </div>
+        </section>
+
+        <!-- THE VAMPIRE DIARIES -->
+        <section id="diarios" class="serie">
+            <h2>THE VAMPIRE DIARIES</h2>
+
+            <img
+                class="capa-serie"
+                src="https://br.web.img2.acsta.net/newsv7/20/06/25/16/59/3481804.jpg"
+                alt="Imagem promocional de The Vampire Diaries"
+            >
+
+            <h3>Uma cidade cheia de segredos</h3>
+
+            <p>
+                The Vampire Diaries é uma série de fantasia, romance e drama
+                sobrenatural baseada nos livros de L. J. Smith. A história
+                acontece na cidade fictícia de Mystic Falls e acompanha
+                Elena Gilbert, uma jovem que conhece os irmãos vampiros
+                Stefan e Damon Salvatore.
+            </p>
+
+            <p>
+                Ao longo da história, os personagens enfrentam vampiros,
+                bruxas, lobisomens, criaturas antigas e muitos perigos.
+                Entre romances, amizades e rivalidades, eles precisam
+                proteger as pessoas que amam.
+            </p>
+
+            <div class="informacoes">
+                <div>
+                    <h3>2009</h3>
+                    <p>Ano de estreia</p>
+                </div>
+
+                <div>
+                    <h3>2017</h3>
+                    <p>Ano do encerramento</p>
+                </div>
+
+                <div>
+                    <h3>8</h3>
+                    <p>Temporadas</p>
+                </div>
+
+                <div>
+                    <h3>171</h3>
+                    <p>Episódios</p>
+                </div>
+            </div>
+
+            <p>
+                <strong>Criação:</strong> Kevin Williamson e Julie Plec.
+            </p>
+        </section>
+
+        <!-- THE ORIGINALS -->
+        <section id="originais" class="serie">
+            <h2>THE ORIGINALS</h2>
+
+            <img
+                class="capa-serie"
+                src="https://m.media-amazon.com/images/M/MV5BYWRkNmUwMGUtNDYyMC00NjZjLTljMDUtNTFhZmY4NzA5M2RiXkEyXkFqcGc@._V1_.jpg"
+                alt="Imagem promocional de The Originals"
+            >
+
+            <h3>A família mais poderosa do mundo sobrenatural</h3>
+
+            <p>
+                The Originals é uma série derivada de The Vampire Diaries.
+                A trama acompanha a família Mikaelson, conhecida como
+                os vampiros originais, em Nova Orleans.
+            </p>
+
+            <p>
+                Klaus Mikaelson retorna à cidade e descobre que precisa
+                lutar para proteger sua família, seu poder e sua filha.
+                A série apresenta disputas entre vampiros, bruxas e
+                lobisomens, além de histórias sobre família, lealdade,
+                perdão e sacrifício.
+            </p>
+
+            <div class="informacoes">
+                <div>
+                    <h3>2013</h3>
+                    <p>Ano de estreia</p>
+                </div>
+
+                <div>
+                    <h3>2018</h3>
+                    <p>Ano do encerramento</p>
+                </div>
+
+                <div>
+                    <h3>5</h3>
+                    <p>Temporadas</p>
+                </div>
+
+                <div>
+                    <h3>92</h3>
+                    <p>Episódios</p>
+                </div>
+            </div>
+
+            <p>
+                <strong>Criação:</strong> Julie Plec.
+            </p>
+        </section>
+
+        <!-- PERSONAGENS -->
+        <section id="personagens" class="personagens">
+            <h2>PERSONAGENS PRINCIPAIS</h2>
+
+            <p>Conheça alguns dos personagens que marcaram essas histórias.</p>
+
+            <div class="cards">
+
+                <article class="card">
+                    <img src="img/damon.jpg" alt="Damon Salvatore">
+                    <h3>Damon Salvatore</h3>
+                    <p>Vampiro impulsivo, sarcástico e apaixonado. Seu passado influencia muitas de suas escolhas.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/stefan.jpg" alt="Stefan Salvatore">
+                    <h3>Stefan Salvatore</h3>
+                    <p>Vampiro que tenta controlar seus impulsos e encontrar equilíbrio entre sua humanidade e sua natureza.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/elena.jpg" alt="Elena Gilbert">
+                    <h3>Elena Gilbert</h3>
+                    <p>Jovem que se envolve no mundo sobrenatural e enfrenta grandes desafios para proteger quem ama.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/bonnie.jpg" alt="Bonnie Bennett">
+                    <h3>Bonnie Bennett</h3>
+                    <p>Bruxa poderosa, amiga leal e uma das personagens mais importantes da história.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/klaus.jpg" alt="Klaus Mikaelson">
+                    <h3>Klaus Mikaelson</h3>
+                    <p>Híbrido de vampiro e lobisomem. É poderoso, imprevisível e muito ligado à família.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/elijah.jpg" alt="Elijah Mikaelson">
+                    <h3>Elijah Mikaelson</h3>
+                    <p>Conhecido por sua elegância, honra e dedicação à família Mikaelson.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/rebekah.jpg" alt="Rebekah Mikaelson">
+                    <h3>Rebekah Mikaelson</h3>
+                    <p>Uma vampira original que deseja viver uma vida com amor, liberdade e felicidade.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/marcel.jpg" alt="Marcel Gerard">
+                    <h3>Marcel Gerard</h3>
+                    <p>Um líder influente de Nova Orleans que disputa poder e espaço com os Mikaelson.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- VILÕES -->
+        <section id="viloes" class="viloes">
+            <h2>VILÕES E GRANDES AMEAÇAS</h2>
+
+            <div class="cards">
+
+                <article class="card">
+                    <img src="img/katherine.jpg" alt="Katherine Pierce">
+                    <h3>Katherine Pierce</h3>
+                    <p>Uma vampira manipuladora que usa sua inteligência para sobreviver.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/kai.jpg" alt="Kai Parker">
+                    <h3>Kai Parker</h3>
+                    <p>Um bruxo perigoso que causa conflitos e ameaça muitas pessoas.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/dahlia.jpg" alt="Dahlia">
+                    <h3>Dahlia</h3>
+                    <p>Uma bruxa extremamente poderosa que representa uma ameaça à família Mikaelson.</p>
+                </article>
+
+                <article class="card">
+                    <img src="img/lucien.jpg" alt="Lucien Castle">
+                    <h3>Lucien Castle</h3>
+                    <p>Um vampiro ambicioso que deseja superar os próprios limites e derrotar os Originais.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ACONTECIMENTOS -->
+        <section id="acontecimentos" class="serie">
+            <h2>ACONTECIMENTOS IMPORTANTES</h2>
+
+            <h3>Em The Vampire Diaries</h3>
+            <ul>
+                <li>Elena conhece os irmãos Salvatore.</li>
+                <li>Os segredos de Mystic Falls começam a aparecer.</li>
+                <li>Bruxas, lobisomens e vampiros entram em conflito.</li>
+                <li>Os personagens enfrentam perdas e fazem grandes sacrifícios.</li>
+            </ul>
+
+            <h3>Em The Originals</h3>
+            <ul>
+                <li>Klaus retorna para Nova Orleans.</li>
+                <li>A família Mikaelson enfrenta inimigos antigos.</li>
+                <li>As disputas pelo controle da cidade aumentam.</li>
+                <li>A família precisa enfrentar escolhas difíceis.</li>
+            </ul>
+        </section>
+
+        <!-- COMPARAÇÃO -->
+        <section id="comparacao" class="comparacao">
+            <h2>DOIS UNIVERSOS, UMA CONEXÃO</h2>
+
+            <div class="comparacao-conteudo">
+
+                <div>
+                    <h3>The Vampire Diaries</h3>
+                    <p><strong>Local:</strong> Mystic Falls.</p>
+                    <p><strong>Foco:</strong> Romance, amizade, mistérios e conflitos sobrenaturais.</p>
+                    <p><strong>Personagens centrais:</strong> Elena, Damon e Stefan.</p>
+                </div>
+
+                <div>
+                    <h3>The Originals</h3>
+                    <p><strong>Local:</strong> Nova Orleans.</p>
+                    <p><strong>Foco:</strong> Família, poder, lealdade e disputas sobrenaturais.</p>
+                    <p><strong>Personagens centrais:</strong> Klaus, Elijah e Rebekah.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- APRENDIZADOS -->
+        <section class="serie">
+            <h2>O QUE PODEMOS APRENDER?</h2>
+
+            <p>
+                Apesar de serem histórias de fantasia, as séries apresentam
+                temas que fazem parte da vida real.
+            </p>
+
+            <ul>
+                <li><strong>Família:</strong> a importância de proteger e apoiar quem amamos.</li>
+                <li><strong>Amizade:</strong> a força de estar ao lado de alguém nos momentos difíceis.</li>
+                <li><strong>Escolhas:</strong> nossas decisões podem mudar o futuro.</li>
+                <li><strong>Perdão:</strong> todos podem tentar mudar, mesmo depois de cometer erros.</li>
+                <li><strong>Coragem:</strong> enfrentar dificuldades exige força e determinação.</li>
+            </ul>
+        </section>
+
+        <!-- PONTOS POSITIVOS E NEGATIVOS -->
+        <section class="comparacao">
+            <h2>PONTOS POSITIVOS E NEGATIVOS</h2>
+
+            <div class="comparacao-conteudo">
+                <div>
+                    <h3>Pontos positivos</h3>
+                    <ul>
+                        <li>Personagens marcantes.</li>
+                        <li>Histórias cheias de mistérios.</li>
+                        <li>Romances e amizades.</li>
+                        <li>Conexão entre as duas séries.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Pontos negativos</h3>
+                    <ul>
+                        <li>Algumas histórias são bastante dramáticas.</li>
+                        <li>Existem muitas perdas de personagens.</li>
+                        <li>Alguns conflitos podem ser repetitivos.</li>
+                        <li>Há cenas de violência sobrenatural.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CURIOSIDADES -->
+        <section id="curiosidades" class="serie">
+            <h2>CURIOSIDADES</h2>
+
+            <div class="curiosidades-lista">
+                <p>🩸 The Originals é uma série derivada de The Vampire Diaries.</p>
+                <p>🩸 A família Mikaelson é conhecida como a família dos vampiros originais.</p>
+                <p>🩸 Mystic Falls é uma cidade fictícia.</p>
+                <p>🩸 Nova Orleans é o principal cenário de The Originals.</p>
+                <p>🩸 As duas séries compartilham personagens e acontecimentos.</p>
+            </div>
+        </section>
+
+        <!-- GALERIA -->
+        <section id="galeria" class="galeria">
+            <h2>GALERIA SOBRENATURAL</h2>
+
+            <p>
+                Imagens, personagens e momentos do universo sobrenatural.
+            </p>
+
+            <div class="galeria-imagens">
+
+                <img
+                    src="https://br.web.img2.acsta.net/newsv7/20/06/25/16/59/3481804.jpg"
+                    alt="Imagem promocional de The Vampire Diaries"
+                >
+
+                <img
+                    src="https://m.media-amazon.com/images/M/MV5BYWRkNmUwMGUtNDYyMC00NjZjLTljMDUtNTFhZmY4NzA5M2RiXkEyXkFqcGc@._V1_.jpg"
+                    alt="Pôster da série"
+                >
+
+                <img
+                    src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/09/elenco-de-the-vampire-diaries.png?w=419&h=283&crop=0&quality=90"
+                    alt="Elenco de The Vampire Diaries"
+                >
+
+                <img
+                    src="https://thumb.wikimedia.org/wikipedia/pt/thumb/9/99/Vampire_Diaries_season_2_promotional_poster.jpeg/250px-Vampire_Diaries_season_2_promotional_poster.jpeg"
+                    alt="Pôster da segunda temporada"
+                >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqZ_DTuTy8DA9Aj4r_Ne2SkAdGMUK427Yb2hBGRgDT56EEmpmQ_WNo01C3&s=10"
+                    alt="Imagem de The Vampire Diaries"
+                >
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtNnBmZi0MDm60fshvI5PMW9yYhyTvV28ZewRm3OiLAM1ZJ4AYMWKSLSw&s=10"
+                    alt="Imagem do universo sobrenatural"
+                >
+
+                <img
+                    src="https://i.pinimg.com/originals/41/c3/78/41c378b9585d8f8885c5d66621103e17.jpg"
+                    alt="Imagem de personagens da série"
+                >
+
+            </div>
+        </section>
+
+        <!-- JOGO -->
+        <section id="jogo" class="jogo">
+            <h2>O SEGREDO DOS IMORTAIS</h2>
+
+            <p>
+                Você está prestes a entrar em uma aventura sobrenatural.
+                Escolha seu caminho, encontre pistas e descubra os segredos
+                dos vampiros originais.
+            </p>
+
+            <button id="startGame" class="botao">
+                COMEÇAR A AVENTURA
+            </button>
+
+            <div id="gameArea" class="game-area">
+
+                <h3 id="gameTitle">O Segredo dos Imortais</h3>
+
+                <p>
+                    Capítulo: <span id="gameChapter">1</span>
+                </p>
+
+                <p>
+                    Pontuação: <span id="gamePoints">0</span>
+                </p>
+
+                <p id="gameStory"></p>
+
+                <div id="gameChoices"></div>
+
+                <p id="gameFeedback"></p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <h2>UNIVERSO SOBRENATURAL</h2>
+
+        <p>
+            Um projeto autoral dedicado aos universos de
+            The Vampire Diaries e The Originals.
+        </p>
+
+        <p>Desenvolvido para um projeto escolar.</p>
+
+        <p>© 2026 - Universo Sobrenatural</p>
+
+        <a href="#inicio">Voltar ao início ↑</a>
+    </footer>
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <button id="backToTop" title="Voltar ao topo">
+        ↑
+    </button>
+
+    <script src="script.js"></script>
+
 </body>
-
 </html>
